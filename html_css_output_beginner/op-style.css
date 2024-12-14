@@ -30,18 +30,17 @@
     position: relative;
     top: 7px;
     left: 15%;
-
-  }
+}
 
   .h-right {
     display: flex;
     list-style-type: none;
-    width: 200px;
     justify-content: space-between;
     position: relative;
     top: 7px;
     left: 16%;
     font-size: 14px;
+    gap: 0 20px;
   }
 
   .TopPhoto {
@@ -49,13 +48,12 @@
     background-size: cover;
     background-position: center;
     margin: 0 auto;
-    width: 373px;
+    width: 100%;
     height: 600px;
   }
 
   h2 {
     display: inline-block;
-    width: 4em;
     border-bottom: 1px solid #000;
   }
 
@@ -84,20 +82,18 @@
 
   .suzuki li {
     letter-spacing: 0.09em;
-    width: 316px;
   }
 
   .photo img {
-    width: 90px;
+    width: 100%;
     border-radius: 80%;
     position: relative;
-    left: 35%;
     bottom: 5px;
+    margin: 0 auto;
   }
 
   .prof-header h2 {
     display: inline-block;
-    width: 8em;
     border-bottom: 1px solid #000;
   }
 
@@ -114,7 +110,6 @@
   .three-set {
     text-align: center;
     margin: 25px -35px 0 -35px;
-
   }
 
   .three-set .title-one {
@@ -134,7 +129,7 @@
   }
 
   .three-photo img {
-    width: 365px;
+    width: 100%;
     margin-top: -5px;
   }
 
@@ -148,7 +143,6 @@
 
   footer {
     border-bottom: 5px solid black;
-    width: 373px;
     margin: 0 auto;
   }
 }
@@ -159,8 +153,10 @@
 
   header {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    position: relative;
+    top: 7px;
   }
 
   h1 {
@@ -169,18 +165,15 @@
     font-size: 19px;
     letter-spacing: -0.08em;
     position: relative;
-    top: 7px;
-
+    left: 15%;
   }
 
   .h-right {
     display: flex;
     list-style-type: none;
-    width: 180px;
-    justify-content: space-between;
+    gap: 0 20px;
     position: relative;
-    top: 7px;
-    left: 6%;
+    right: 10%;
     font-size: 13px;
   }
 
@@ -208,7 +201,7 @@
     margin-top: 20px;
     font-weight: bold;
     letter-spacing: 0.1em;
-    margin-left: 17%;
+    margin-left: 11.5%;
   }
 
   .tp {
@@ -230,7 +223,7 @@
     width: 90px;
     border-radius: 80%;
     position: relative;
-    bottom: 40%;
+    top: 5%;
     right: 30%;
   }
 
@@ -252,11 +245,7 @@
 
   .three-set {
     text-align: center;
-    margin: 25px -35px 0 -35px;
   }
-
-
-
 
   .three-set .text {
     display: inline-block;
