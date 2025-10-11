@@ -65,7 +65,13 @@ class VendingMachine:
                 return
         raise Exception("ジュースは在庫切れです")
 
-    def buy_process(self, juice, suica):
+    def buy(self, juice, suica):
+        stock_judge, money_judge = self.buy_decision(juice, suica)
+        if not stock_judge:
+            raise Exception("ジュースは在庫切れです")
+        if not money_judge:
+            raise Exception("チャージ残高が不足しています")
+        
         self.reduce_stock(juice)
         suica.pay(juice.price)
         self._sales += juice.price
