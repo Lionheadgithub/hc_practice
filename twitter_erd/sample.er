@@ -1,0 +1,95 @@
+[users] {bgcolor: "#d0e0d0"}
+  *id {label: "bigint, not null"}
+  username {label: "varchar, not null, uniq"}
+  email {label: "varchar, not null, uniq" }
+  tell_number {label: "varchar, null, uniq"}
+  full_name {label: "varchar, null"}
+  self_introduce {label: "varchar, null"}
+  address {label: "varchar, null"}
+  my_hp {label: "varchar, null"}
+  birthday {label: "date, null"}
+  prof_image {label: "blob, null"}
+  avatar_image {label: "blob, null"}
+  created_at { label: "datatime, not null"}
+  updated_at { label: "datatime, not null"}
+
+[tweets]
+  *id {label: "bigint, not null"}
+  user_id {label: "bigint, not null, FK(users)"}
+  main_text {label: "varchar, not null"}
+  created_at { label: "datatime, not null"}
+  updated_at { label: "datatime, not null"}
+
+[likes]
+  *id {label: "bigint, not null"}
+  user_id {label: "bigint, not null, FK(users)"}
+  tweet_id {label: "bigint, not null, FK(tweets)"}
+  created_at { label: "datatime, not null"}
+  updated_at { label: "datatime, not null"}
+
+[follows]
+  *id {label: "bigint, not null"}
+  follower_id {label: "bigint, not null, FK(users)"}
+  followee_id {label: "bigint, not null, FK(users)"}
+  created_at { label: "datatime, not null"}
+  updated_at { label: "datatime, not null"}
+
+[direct_messages]
+  *id {label: "bigint, not null"}
+  sender {label: "bigint, not null, FK(users)"}
+  recipient {label: "bigint, not null, FK(users)"}
+  main_text {label: "varchar, not null"}
+  created_at { label: "datatime, not null"}
+  updated_at { label: "datatime, not null"}
+
+[bookmarks]
+  *id {label: "bigint, not null"}
+  user_id {label: "bigint, not null, FK(users)"}
+  tweet_id {label: "bigint, not null, FK(tweets)"}
+  created_at { label: "datatime, not null"}
+  updated_at { label: "datatime, not null"}
+
+[retweets]
+  *id {label: "bigint, not null"}
+  user_id {label: "bigint, not null, FK(users)"}
+  tweet_id {label: "bigint, not null, FK(tweets)"}
+  created_at { label: "datatime, not null"}
+  updated_at { label: "datatime, not null"}
+
+[notifications]
+  *id {label: "bigint, not null"}
+  recipient_id {label: "bigint, not null, FK(users)"}
+  type {label: "varchar, not null"}
+  sender_id {label: "bigint, null, FK(users)"}
+  tweet_id {label: "bigint, null, FK(tweets)"}
+  is_read {label: "boolean, not null"}
+  created_at { label: "datatime, not null"}
+  updated_at { label: "datatime, not null"}
+
+
+# Cardinality    Syntax
+# 0 or 1         ?
+# exactly 1      1
+# 0 or more      *
+# 1 or more      +
+
+# リレーションシップ定義 (ER図の線)
+# user_id を持つテーブル
+tweets *--1 users
+likes *--1 users
+bookmarks *--1 users
+retweets *--1 users
+
+# tweet_id を持つテーブル
+likes *--1 tweets
+bookmarks *--1 tweets
+retweets *--1 tweets
+notifications *--1 tweets
+
+# usersテーブルを自己参照するテーブル（リレーションシップに役割を定義）
+follows *--1 users "follower"
+follows *--1 users "followee"
+direct_messages *--1 users "sender"
+direct_messages *--1 users "recipient"
+notifications *--1 users "recipient"
+notifications *--1 users "sender"
